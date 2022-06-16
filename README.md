@@ -3,7 +3,7 @@ With this python project you can set up a Raspberry Pi Pico to send a keyboard i
 
 Can be used to close tabs or windows on your PC, when a door is opened. Uses a Raspberry Pi Pico and an HC-SR04 ultrasonic sensor. It communicates with the PC using Circuitpython and the HID Library, so it works on any computer without configuration.
 
-The python code examples and the distance measuring code for the Raspberry Pi Pico are under ------.
+The python code examples and the distance measuring code for the Raspberry Pi Pico are under [examples](https://github.com/HeyJoFlyer/RP-Pico-Door-Keyboard-Input/tree/main/examples).
 
 The programs under ----- are used to create your own keyboard shortcuts and to spefify the distance to the door.
 
