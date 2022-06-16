@@ -8,7 +8,7 @@ The programs under ----- are used to create your own keyboard shortcuts and to s
 
 ## How to start
 First you need a few Downloads for the Pi Pico:
-  circuitpython.uf2: https://circuitpython.org/board/raspberry_pi_pico/
-  download and extract circuitpython libraries: https://circuitpython.org/libraries
-  mu editor for serial communication (only for distance mesearing or troubleshooting): https://codewith.mu/en/download
+circuitpython.uf2: https://circuitpython.org/board/raspberry_pi_pico/
+download and extract circuitpython libraries: https://circuitpython.org/libraries
+mu editor for serial communication (only for distance mesearing or troubleshooting): https://codewith.mu/en/download
 You need to connect a Pi Pico to your computer while holding the BOOTSEL Button. Then drag the .uf2 file onto the Pi Pico, the Pi will restart.
