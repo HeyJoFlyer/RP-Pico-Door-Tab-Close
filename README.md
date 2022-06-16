@@ -25,7 +25,7 @@ You need to "arm" the system by connecting pin GP2 to ground (use a button).
 ## How to get the distance
 
 - You can either measure the distance with a tape measure
-- 
+
 - Or you can measure it by installing the mu editor, installing the libraries on the Pi Pico and connecting it to the computer. Download [this code](), copy it to the Pi and rename it to code.py
 
 ## Trobleshooting
