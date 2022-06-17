@@ -32,5 +32,4 @@ You need to "arm" the system by connecting pin GP2 to ground (use a button).
 
 - Great resoruce for help is the [CircuitPython repo](https://github.com/adafruit/circuitpython)
 - If you have any questions or bugreports, feel free to open a new issue
-
 - The Pi Pico will only execute files named code.py, so rename your file if it has another name
