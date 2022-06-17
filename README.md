@@ -5,9 +5,9 @@ Can be used to close tabs or windows on your PC, when a door is opened. Uses a R
 
 The python code examples and the distance measuring code for the Raspberry Pi Pico are under [examples](https://github.com/HeyJoFlyer/RP-Pico-Door-Keyboard-Input/tree/main/examples).
 
-The programs under ----- are used to create your own keyboard shortcuts and to spefify the distance to the door.
+The program under [door-Keyboard](https://github.com/HeyJoFlyer/RP-Pico-Door-Keyboard-Input/tree/main/door-Keyboard) is used to create your own keyboard shortcuts and to spefify the distance to the door.
 
-You can find precompiled programs for Windows and Linux here.
+You can find precompiled binaries for Windows and Linux [here](https://github.com/HeyJoFlyer/RP-Pico-Door-Keyboard-Input/releases/).
 
 ## How to get started
 First you need a few Downloads for the Pi Pico:
