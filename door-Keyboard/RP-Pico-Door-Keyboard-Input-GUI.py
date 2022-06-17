@@ -4,7 +4,8 @@
 # after following th GUI and pressing GO it will write a code.py file
 # drag the code.py file onto the Raspberry Pi Pico
 # read the github page for further information and libraries
-import time, webbrowser
+from ast import Break
+import time, webbrowser, os
 import PySimpleGUI as sg
 sg.theme("DarkAmber")
 script = open("code.py", "w") # creates the code.py file
@@ -13,18 +14,20 @@ combinations = []   # creates a list for the keycombinations
 Buttonstate = 0 # Sets if a button has changed color and needs to be reset
 lowerGUI =  [sg.Frame("keycombinations you entered",[
             [sg.Text("", key = "Keycombinations")]
-])]
+            ], element_justification="center")]
 upperGUI = [sg.Frame("", [[sg.Text("Select the distance to the door here (in cm)"), sg.Slider(range = (10, 400), default_value = 50, orientation = "horizontal", key = "Distance")],
             [sg.HSeparator()],
-            [sg.Text("Enter the key combinations you want and press ad for each combination, reference on github")],
-            [sg.InputText("Keycode.",key="KEYS")],
+            [sg.Text("Enter the key combinations you want and press ad for each combination")],
+            [sg.Text("Reference on github (use Keyboard.KEY, example Keyboard.WINDOWS; Keyboard.ONE)")],
+            [sg.InputText("Keycode.",key="KEYS")], # combinations input
             [sg.Text("")],  #spacer
             [sg.Text("Enter delay to next Keypress (in ms)"), sg.Slider(range = (1, 1000), default_value = 50, orientation ="horizontal", key="Delay")],
             [sg.Button("Add combination", key="ADD")],
             [sg.Button("Remove previous combination", key="REMOVE")],
             [sg.HSeparator()],
             [sg.Text("When finished, press "), sg.Button("GO", key = "GO")],
-            [sg.Button("Github", key = "Github")]])]
+            [sg.Button("Github", key = "Github")]
+            ], element_justification="center")]
 
 layout = [  [upperGUI], # window layout
             [sg.Text("")], # spacer
@@ -65,5 +68,10 @@ while True:
     if event == "Github":   # opens github page
         webbrowser.open("https://github.com/HeyJoFlyer/RP-Pico-Door-Keyboard-Input")
     if event == sg.WIN_CLOSED: #closes window
-        break
+        script.close() #cloes code.py
+        read_file = open("code.py", "r") # opens code.py as read
+        char = read_file.read(1) # first character of code.py 
+        if not char: # deletes code.py if empty
+            os.remove("code.py")
+        break # closes window
     window.refresh() #refreshes the window to change the button color
