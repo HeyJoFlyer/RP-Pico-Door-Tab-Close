@@ -1,1 +1,4 @@
 PySimpleGUI==4.60.1
+adafruit_hid==5.2.2
+adafruit_hcsr04==0.4.8
+circuitpython==7.1.1
