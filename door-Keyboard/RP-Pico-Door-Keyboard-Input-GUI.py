@@ -4,36 +4,14 @@
 # after following th GUI and pressing GO it will write a code.py file
 # drag the code.py file onto the Raspberry Pi Pico
 # read the github page for further information and libraries
-# v1.0.0
-from email.policy import default
-import sqlite3 as sl # importing Database for Actions
+from ast import Break
 import time, webbrowser, os
 import PySimpleGUI as sg
 sg.theme("DarkAmber")
-os.remove("actions.db")
-db = sl.connect("actions.db")
-with db:
-    db.execute("""
-        CREATE TABLE USER (
-            id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-            inputtype TEXT,
-            buttonGP INTEGER,
-            triggerGP INTEGER,
-            echoGP INTEGER,
-            keycombinations TEXT
-        );
-    """) # creates database TABLE inputtypes: sonar, button, notbutton
-
 script = open("code.py", "w") # creates the code.py file
 code = ["# RP-Pico-Door-Tab-Close", "# https://github.com/HeyJoFlyer/RP-Pico-Door-Keyboard-Input", "import time, board, usb_hid, digitalio, adafruit_hcsr04", "from adafruit_hid.keyboard import Keyboard", "from adafruit_hid.keyboard_layout_us import KeyboardLayoutUS", "from adafruit_hid.keycode import Keycode", "keyboard = Keyboard(usb_hid.devices)", "keyboard_layout = KeyboardLayoutUS(keyboard)", "led = digitalio.DigitalInOut(board.GP25)", "led.direction = digitalio.Direction.OUTPUT", "led.value = False", "sonar = adafruit_hcsr04.HCSR04(trigger_pin=board.GP9, echo_pin=board.GP10, timeout = 1)", "resetstate = 0", "reset = digitalio.DigitalInOut(board.GP2)", "reset.direction = digitalio.Direction.INPUT", "reset.pull = digitalio.Pull.DOWN"] # first part of code.py, gets added to the list code and is writen to code.py at the end
-combinations = [] # creates a list for the keycombinations
-freeGP = ["GP0", "GP1", "GP2", "GP3", "GP4", "GP5", "GP6", "GP7", "GP8", "GP9", "GP10", "GP11", "GP12", "GP13", "GP14", "GP15", "GP16", "GP17", "GP18", "GP19", "GP20", "GP21", "GP22", "GP25 (internal LED)", "GP26", "GP27", "GP28"] # creates a list for the freeGP pins
-Actions = [] # creates a list for the different Actions, each Action is used for one input
+combinations = []   # creates a list for the keycombinations
 Buttonstate = 0 # Sets if a button has changed color and needs to be reset
-selectGUI = [sg.Frame("select which action you want", [
-            [sg.Listbox(values=(Actions)), sg.Button("delete Action", key="delete_action"), sg.Button("add sonar input", key="ADDsonar"), sg.Button("add button/digital input", key="ADDbutton")],
-            [sg.InputOptionMenu("select sonar trigger pin", values=(freeGP), key="triggerpin"), sg.InputOptionMenu("select sonar echo pin", values=(freeGP), key="echopin"), sg.InputOptionMenu("select button pin", values=(freeGP), key="buttonpin")]
-            [sg.Checkbox("Disarm when activated (current action)", default=False, key="disarm_current_action"), sg.InputOptionMenu("select \"arm\" button pin(for whole System)", values=(freeGP), key="armpin")]])]
 lowerGUI =  [sg.Frame("keycombinations you entered",[
             [sg.Text("", key = "Keycombinations")]
             ], element_justification="center")]
